@@ -2,12 +2,12 @@
 This repository includes codes to automatically download and clean datasets that
  can be used for SAD analysis.
 
-### R dependecies
-tidyrverse  
-dbplyr  
-RSQLite  
+### R dependencies
+tidyrverse
+dbplyr
+RSQLite
 
-### Python dependecies
+### Python dependencies
 Some of comunity datasets require the
  [EcoData Retriever](https://github.com/weecology/retriever) for import.
 
@@ -41,12 +41,11 @@ Some of comunity datasets require the
 - BCI and Lambir require permission.
 - fia_spab.csv is too large to store here.
 - bbs_spab.csv and fia_spab.csv only use the latest census.
-- The misc data uses multile years' data (site_id indicates site x year combiantion).
+- The misc data uses multiple years' data (site_id indicates site x year combiantion).
 - Each data contains at least 10 species per site.
-- Spatial scale is not considerd.
+- Spatial scale is not considered.
 
 ### ToDo
 - Update Total sites in the table
 - Check private data in the table
 - Script for downloading metadata?
-
