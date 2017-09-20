@@ -1,0 +1,362 @@
+INTRODUCTION
+This dataset was developed to provide a source of abundance data for groups that do not have extensive compilations of abundance data.  
+
+ 
+
+There are several caveats to the use of this database.  Abundance has been recorded as the raw abundance or the relative abundance, depending on what was available from the original source.  Abundance is the total number of individuals captured, relative abundance is the total number of individuals captured for a single species/ total number of individuals of all species.
+ 
+
+METADATA CLASS I. DATA SET DESCRIPTIONS
+
+A. Data set identity: 
+
+     Title: MiscAbundance
+ 
+
+B. Data set identification code:
+
+1. Abundance data: Species_abundances.csv
+
+2. Sites data file : Sites_table_abundances.csv
+
+3. Reference file: Citations_table_abundances.csv
+
+ 
+
+C. Data set description
+
+     Principal Investigators:
+
+Elita Baldridge
+
+Department of Biology and the Ecology Center
+
+Utah State University
+
+Logan, UT 84322
+
+United States of America
+
+ 
+
+D. Key words:
+
+Abundance, communities, reptiles, spiders, beetles, fish, amphibians, birds
+
+ 
+
+CLASS II. RESEARCH ORIGINS DESCRIPTORS
+
+ 
+
+A. Overall project description
+
+     
+
+     Identity:
+
+Understanding drivers of species abundance. 
+
+ 
+
+     Originators:
+
+Elita Baldridge
+
+ 
+
+ 
+
+     Period of study:
+
+2010 - 2012
+
+ 
+
+     Objectives:
+
+To compile information on community abundance for vertebrate and invertebrate groups for which there were not already compiled abundance databases.
+
+ 
+
+     Abstract:
+
+Same as above.  This database is not a subset of a larger study.
+
+ 
+
+     Source(s) of funding:
+
+E. B. has been supported by Utah State University.
+
+ 
+
+B. Specific subproject description
+
+ 
+
+     Site description:
+
+Sources contained data collected from a variety of different locations, resulting in a data set with a global extent.
+
+ 
+
+     Experimental or sampling design:
+
+Data were obtained from the scientific literature. 
+
+ 
+
+     Research Methods:
+
+     Field/Laboratory:
+
+Not applicable
+
+ 
+
+     Data Sources:
+
+Data were compiled from the scientific literature.  References for data sources are presented in a separate file, citations_table_abundances.csv, because of the extensive reference list involved with this project. 
+
+ 
+
+     Data Collection
+
+Data were hand entered into a raw data file as they came from the original source or extracted from the original source computationally.  All the data initially collected were not included in the final summary, because they were not deemed suitable for inclusion in the final database.
+
+The data have not been updated taxonomically; the species names were kept as given in the original source.  
+
+ 
+
+     Variables:
+
+Abundance: total number of individuals captured
+
+Relative_abundance: total number of individuals captured for a single species/ total number of individuals of all species.
+ 
+
+ 
+
+     Project Personnel:
+
+     Elita Baldridge 
+
+
+
+ 
+
+ 
+
+CLASS III. DATA SET STATUS AND ACCESSIBILITY
+
+ 
+
+A. Status
+
+     
+
+     Latest Update:
+
+          September 2012 for the final format of all files 
+
+     Latest Archive date:
+
+September 2012  
+
+ 
+
+     Metadata status:
+
+Metadata is current.
+
+ 
+
+     Data verification:
+
+          Data quality has been checked as outline in class V, section B, below. 
+
+ 
+
+ 
+
+B. Accessibility
+
+ 
+
+     Storage location and medium:
+
+The data are presented here in the following files: 
+ 
+Abundance data: Species_abundances.csv
+
+Reference file: Citations_table_abundances.csv
+
+Sites data file : Sites_table_abundances.csv
+    
+
+ 
+
+     Contact person:
+
+Elita Baldridge, elita.baldridge@weecology.org
+
+  
+
+     Copyright restrictions: None.
+
+ 
+
+     Proprietary restrictions: None.
+
+ 
+
+     Costs: None.  The authors believe that data should be freely available for use. 
+
+ 
+
+CLASS IV. DATA STRUCTURAL DESCRIPTORS
+
+ 
+
+A. Data Set File
+
+ 
+
+     Identity:
+
+ 
+
+1. Abundance data: Species_abundances.csv
+
+2. Sites data file : Sites_table_abundances.csv
+
+3. Reference file: Citations_table_abundances.csv
+
+ 
+
+     Size:
+
+1. 22143 records, including header row.
+
+2. 707 records, including header row.
+
+3. 117 records, including header row.
+
+     
+
+     Format and Storage mode:
+
+ASCII text, comma delimited, not compressed. 
+
+ 
+
+     Header information:
+
+1. Class, Family, Genus, Species, Relative_abundance, Abundance, Site_ID, Citation_ID 
+
+2. Site_ID, Collection_Year, End_Collection, Citation_ID, Site_Name, Biogeographic_region, Site_notes
+
+
+3. Citation_ID, Authors, Yr, Title, Journal, Issue, Pages
+
+ 
+
+     Alphanumeric attributes:
+
+Mixed
+
+ 
+
+     Special characters/fields:
+
+Blanks indicate no data: no special characters used.
+
+ 
+
+     Authentication procedures:
+
+1. Sum of Relative_abundance = 10797.37352
+	
+   Sum of Abundance = 1320592
+
+
+
+ 
+
+B. Variable definitions
+Variable name 	Variable definition 	Units 	Storage type 	Range of values 	Missing value codes
+Class 	Taxonomic class of species 	N/A 	Character 	  	N/A
+Family 	Taxonomic family of species 	N/A 	Character 	  	N/A
+Genus 	Taxonomic genus of species 	N/A 	Character 	  	N/A
+Species	Specific epithet of species 	N/A 	Character 	  	N/A
+Relative_abundance	Relative abundance of species	N/A	Double	0 - 309
+Abundance	Abundance of species	N/A	Integer	0-181726
+Collection_Year	Start of collecting	N/A	Integer	1952-2008
+End_Collection	End of collecting	N/A	Integer	1977-2009
+Site_Name	Name/description of site	N/A	Character	N/A
+Biogeographic_region	Biogeographic region	N/A	Character	N/A
+Site_notes	Additional site information	N/A	Character	N/A
+
+
+ 
+
+CLASS V. SUPPLEMENTAL DESCRIPTORS
+
+ 
+
+A. Data acquisition
+
+Data were compiled from the literature without the use of data forms.
+
+ 
+
+B. Quality assurance/quality control procedures
+
+Data have undergone initial quality and assurance checking.  Data were entered directly from the source material into the raw data file and values were double checked on entry.  
+ 
+
+C. Related material:
+
+Not applicable.
+
+ 
+
+D. Computer programs and data processing algorithms:
+
+Not applicable
+
+ 
+
+E. Archiving:
+
+Not applicable.
+
+ 
+
+F. Publications and results:
+
+Reference list for data set is available in Citations_table_abundance.csv.  Data sources for each variable for each species are indicated by Citation_ID in the files Species_abundances.csv and Sites_table_abundances.csv  The full reference list is not presented here due to the length of the list.
+
+ 
+
+G. History of data set usage:
+
+ 
+
+ 
+
+H. Data set update history:
+
+ 
+
+     Review history:
+
+Not applicable 
+
+     
+
+     Questions and comments from secondary users:
+
+Not applicable 
+

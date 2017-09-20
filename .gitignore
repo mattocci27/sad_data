@@ -1,0 +1,7 @@
+*.sqlite3
+*.rda
+*.Rda
+*.RData
+bci_spab.csv
+lambir_spab.csv
+fia_spab.csv

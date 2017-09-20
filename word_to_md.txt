@@ -1,0 +1,3 @@
+
+pandoc -s ecy1682-sup-0002-MetadataS1.docx -t markdown -o Metadata_ants.md
+pandoc -s Metadata_ants.md -t html -o Metadata_ants.html
