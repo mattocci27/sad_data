@@ -2,6 +2,7 @@
 *.rda
 *.Rda
 *.RData
+/metadata
 bci_spab.csv
 lambir_spab.csv
 fia_spab.csv
