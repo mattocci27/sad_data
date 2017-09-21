@@ -8,7 +8,7 @@ dbplyr
 RSQLite
 
 ### Python dependencies
-Some of comunity datasets require the
+Some of community datasets require the
  [EcoData Retriever](https://github.com/weecology/retriever) for import.
 
 ### Usage
@@ -41,7 +41,7 @@ Some of comunity datasets require the
 - BCI and Lambir require permission.
 - fia_spab.csv is too large to store here.
 - bbs_spab.csv and fia_spab.csv only use the latest census.
-- The misc data uses multiple years' data (site_id indicates site x year combiantion).
+- The misc data uses multiple years' data (site_id indicates site x year combination).
 - Each data contains at least 10 species per site.
 - Spatial scale is not considered.
 
