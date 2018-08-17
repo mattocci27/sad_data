@@ -173,14 +173,20 @@ if (file.exists("forest-inventory-analysis.sqlite3")) {
     select(plt_cn) %>% 
     inner_join(abund, by = "plt_cn") 
 
+  #plt_cn ~= year
   abund3 <- inner_join(abund2, site4, c("plt_cn" = "cn")) %>%
     #filter(invyr == invyr_max) %>% # only use the latest census
-    group_by(plot_id, plt_cn, spcd) %>%
+    #group_by(plot_id, plt_cn, spcd) %>%
+    group_by(plot_id, invyr, spcd) %>%
     summarise(ab = n()) %>%
     select(site = plot_id,
-           year = plt_cn,
+           #year = plt_cn,
+           year = invyr,
            sp = spcd,
            ab = ab)
+
+  #abund3 <- inner_join(abund2, site4, c("plt_cn" = "cn")) %>%
+    #filter(invyr == invyr_max) %>% # only use the latest census
 
   write.csv(abund3, "fia_spab.csv", row.names = FALSE)
   print("Created fia_spab.csv")
