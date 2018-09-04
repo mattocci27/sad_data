@@ -46,6 +46,12 @@ d <- read_csv(file.path(zip_dir,
   "NLA2007_Chemical_ConditionEstimates_20091123.csv"))
 db %>% dbWriteTable("nla2007_chemical_condition", d)
 
+
+
+d <- read_csv(file.path(zip_dir, 
+  "NLA2007_SampledLakeInformation_20091113.csv"))
+db %>% dbWriteTable("nla2007_lake_info", d)
+
 #data_list <- dbListTables(db)
 
 #print(paste("Created:", data_list))
