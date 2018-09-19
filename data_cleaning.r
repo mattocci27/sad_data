@@ -20,7 +20,10 @@ if (file.exists("gentry-forest-transects.sqlite3")) {
     select(site = site_code,
            sp = species_id,
            ab = count) %>%
-    mutate(year = "")
+    group_by(site, sp) %>%
+    summarize(ab = sum(ab)) %>%
+    mutate(year = "") %>%
+    ungroup()
 
   abund2 <- abund %>%
     group_by(site) %>%
@@ -316,7 +319,8 @@ if (file.exists("epa.sqlite3")) {
     filter(SITE_TYPE == "PROB_Lake") %>% # can be used for population estimation
     filter(SAMPLED_PHYT != "Sample lost")  %>% # remove lost data
     select(site = SITE_ID,
-           sp = OTU_TAXA,
+           #sp = OTU_TAXA,
+           sp = TAXANAME,
            ab = ABUND # (cells/mL)
            ) %>%
     mutate(year = 2007) 
@@ -336,10 +340,10 @@ if (file.exists("epa.sqlite3")) {
     tbl("nla2012_phytoplankton_count") %>%
     filter(VISIT_NO == 1) %>% # Use only 1st visit; ignoring pesuedosamples
     select(site = SITE_ID,
-           sp = TAXA_ID,
+           sp = TAXA_ID, # sp level
            ab = DENSITY) %>% # metadata says cells/L but it looks cells/mL
     mutate(year = 2012) 
- 
+  
   abund4 <- abund3 %>%
     group_by(site) %>%
     summarise(n = n()) %>%
