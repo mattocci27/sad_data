@@ -26,6 +26,10 @@ d <- read_csv(file.path(zip_dir,
 db %>% dbWriteTable("nla2007_phytoplankton_count", d)
 
 d <- read_csv(file.path(zip_dir, 
+  "NLA2007_Phytoplankton_DiatomCount_20091125.csv"))
+db %>% dbWriteTable("nla2007_phytoplankton_diatom_count", d)
+
+d <- read_csv(file.path(zip_dir, 
   "NLA2007_WaterQuality_20091123.csv"))
 db %>% dbWriteTable("nla2007_water_quality", d)
 
