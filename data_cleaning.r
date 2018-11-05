@@ -313,6 +313,18 @@ if (file.exists("lambir.sqlite3")) {
 if (file.exists("epa.sqlite3")) {
   db <- src_sqlite("epa.sqlite3", create = TRUE)
  
+  #abund0 <- db %>%
+  #  #tbl("nla2007_phytoplankton_diatom_count") %>%
+  #  tbl("nla2007_phytoplankton_count") %>%
+  #  filter(VISIT_NO == 1) %>% # Use only 1st visit; ignoring pesuedosamples
+  #  filter(SITE_TYPE == "PROB_Lake") %>% # can be used for population estimation
+  #  filter(SAMPLED_PHYT != "Sample lost")  %>% # remove lost eata
+  #  select(site = SITE_ID,
+  #         sp = TAXANAME,
+  #         ab = ABUND # (cells/mL)
+  #         ) %>%
+  #  mutate(year = 2007) 
+
   abund <- db %>% 
     tbl("nla2007_phytoplankton_count") %>%
     filter(VISIT_NO == 1) %>% # Use only 1st visit; ignoring pesuedosamples
@@ -335,14 +347,32 @@ if (file.exists("epa.sqlite3")) {
 
   write.csv(abund2, "epa2007_spab.csv", row.names = FALSE)
   print("Created epa2007_spab.csv")
+
+
+  abund_di <- db %>% 
+    tbl("nla2007_phytoplankton_diatom_count") %>%
+    filter(VISIT_NO == 1) %>% # Use only 1st visit; ignoring pesuedosamples
+    filter(SITE_TYPE == "PROB_Lake") %>% # can be used for population estimation
+    filter(SAMPLED_PHYT != "Sample lost")  %>% # remove lost data
+    select(site = SITE_ID,
+           #sp = OTU_TAXA,
+           sp = TAXANAME,
+           ab = COUNT # (cells/mL)
+           ) %>%
+    mutate(year = 2007) 
+  
+  #abund3 <- db %>% 
+  #  tbl("nla2012_phytoplankton_count") %>%
    
   abund3 <- db %>% 
     tbl("nla2012_phytoplankton_count") %>%
     filter(VISIT_NO == 1) %>% # Use only 1st visit; ignoring pesuedosamples
+    filter(SAMPLE_TYPE == "PHYX") %>% # Use index sample 
     select(site = SITE_ID,
            sp = TAXA_ID, # sp level
-           ab = DENSITY) %>% # metadata says cells/L but it looks cells/mL
-    mutate(year = 2012) 
+           #ab = DENSITY) %>% # metadata says cells/L but it looks cells/mL
+           ab = ABUNDANCE) %>% # Number of organisms counted from sample ??
+    mutate(year = 2012)
   
   abund4 <- abund3 %>%
     group_by(site) %>%
@@ -352,12 +382,53 @@ if (file.exists("epa.sqlite3")) {
     inner_join(abund3, by = "site") %>%
     select(site, year, sp, ab)
 
+  abund5 <- db %>% 
+    tbl("nla2012_phytoplankton_count") %>%
+    filter(VISIT_NO == 1) %>% # Use only 1st visit; ignoring pesuedosamples
+    filter(SAMPLE_TYPE == "PHYX") %>% # Use index sample 
+    select(site = SITE_ID,
+           sp = TAXA_ID, # sp level
+           #ab = DENSITY) %>% # metadata says cells/L but it looks cells/mL
+           ab = BIOVOLUME) %>% # cells  um^3 /ml
+    mutate(year = 2012)
+  
+  abund6 <- abund5 %>%
+    group_by(site) %>%
+    summarise(n = n()) %>%
+    filter(n >= 10) %>%
+    select(site) %>%
+    inner_join(abund5, by = "site") %>%
+    select(site, year, sp, ab)
+  
+  abund7 <- db %>% 
+    tbl("nla2012_phytoplankton_count") %>%
+    filter(VISIT_NO == 1) %>% # Use only 1st visit; ignoring pesuedosamples
+    filter(SAMPLE_TYPE == "PHYX") %>% # Use index sample 
+    select(site = SITE_ID,
+           sp = TAXA_ID, # sp level
+           ab = DENSITY) %>% # metadata says cells/L but it looks cells/mL
+    mutate(year = 2012)
+  
+  abund8 <- abund7 %>%
+    group_by(site) %>%
+    summarise(n = n()) %>%
+    filter(n >= 10) %>%
+    select(site) %>%
+    inner_join(abund7, by = "site") %>%
+    select(site, year, sp, ab)
+
+
   write.csv(abund4, "epa2012_spab.csv", row.names = FALSE)
   print("Created epa2012_spab.csv")
+  
+  write.csv(abund6, "epa2012_spab_bio.csv", row.names = FALSE)
+  print("Created epa2012_spab_bio.csv")
+  
+  write.csv(abund8, "epa2012_spab_dens.csv", row.names = FALSE)
+  print("Created epa2012_spab_dens.csv")
 }
 
 # Ants
-
 if (file.exists("ants.sqlite3")) {
   db <- src_sqlite("ants.sqlite3", create = TRUE)
 
