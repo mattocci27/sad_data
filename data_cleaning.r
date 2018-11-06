@@ -223,12 +223,11 @@ if (file.exists("community-abundance-misc.sqlite3")) {
            ab = abundance) %>%
     filter(sp != "_sp.") # remove unkonw data 
 
-  site <- abund2 %>%
+  site2 <- abund2 %>%
     mutate(moge = 1) %>%
     group_by(class, site) %>%
     summarise(n = n()) %>%
-    filter(n >= 10) %>% # at least 10 species per site
-    select(site)
+    filter(n >= 10)  # at least 10 species per site
 
   abund22 <- abund2 %>%
     mutate(site_class = paste(site, class, sep = "_"))
@@ -246,9 +245,7 @@ if (file.exists("community-abundance-misc.sqlite3")) {
     class <- tolower(Class)
     file_name <- paste(class, "_spab.csv", sep = "")
     abund3 %>% 
-      filter(class.x == paste(Class)) %>%
-      select(-class.x) %>%
-      select(-class.y) %>%
+      filter(class == paste(Class)) %>%
       write.csv(paste(file_name), row.names = FALSE)
   }
 
