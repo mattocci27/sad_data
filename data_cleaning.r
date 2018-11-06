@@ -217,7 +217,7 @@ if (file.exists("community-abundance-misc.sqlite3")) {
     filter(abundance > 0) %>%
     mutate(sp = paste(genus, species, sep = "_")) %>%
     select(class, 
-           site = site_id, 
+           site = site_id,
            year = collection_year,
            sp, 
            ab = abundance) %>%
@@ -230,7 +230,17 @@ if (file.exists("community-abundance-misc.sqlite3")) {
     filter(n >= 10) %>% # at least 10 species per site
     select(site)
 
-  abund3 <- inner_join(abund2, site, by = "site")
+  abund22 <- abund2 %>%
+    mutate(site_class = paste(site, class, sep = "_"))
+
+  site22 <- site2 %>%
+    mutate(site_class = paste(site, class, sep = "_")) %>%
+    ungroup %>%
+    dplyr::select(site_class)
+
+  abund3 <- inner_join(abund22, site22, by = "site_class") %>%
+    dplyr::select(-site_class)
+
 
   write_csv <- function(Class = "Reptilia") {
     class <- tolower(Class)
